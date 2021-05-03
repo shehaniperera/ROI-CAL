@@ -194,7 +194,7 @@
 
                   <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Number of interview rounds per one candidate </span>
-                    <input class="input100" type="text" name="phone" placeholder="Enter members for one interview">
+                    <input class="input100" type="text" name="phone" placeholder="Enter number of  interview rounds">
                   
                     <div class="contact100-form-range-value">
                       <span id="demo2">0</span> 
@@ -209,7 +209,7 @@
 
                  
            
-                  <div class="wrap-input100 validate-input bg1">
+                  <!-- <div class="wrap-input100 validate-input bg1">
                     <span class="label-input100">Actual Interview time </span>
                     <input class="input100" type="text" name="interview_time" placeholder="Enter scheduling and prep time">
                   
@@ -218,12 +218,12 @@
                       <span id="demo3">0</span> 
                     </div>
         
-                    <div class="slidecontainer">
+                    <div class="slidecontainer"> -->
                       <!-- <div id="filter-bar"></div> -->
-                      <input type="range" min="0" max="200" value="0" class="slider" id="filter-bar3">
+                      <!-- <input type="range" min="0" max="200" value="0" class="slider" id="filter-bar3">
                     </div>
 
-                  </div>
+                  </div> -->
                   
 
 
@@ -262,7 +262,7 @@
 
                 var members  = document.getElementById("filter-bar1").value;
                 var rounds  = document.getElementById("filter-bar2").value;
-                var interview_time  = document.getElementById("filter-bar3").value;
+                // var interview_time  = document.getElementById("filter-bar3").value;
                 var wage  = document.getElementById("filter-bar4").value;
 
                 var minsSaved = hirespi * hirespy * 90 * rounds;
@@ -547,15 +547,15 @@ html2canvas($(".wrapper1")[0],{allowTaint:true}).then(function(canvas) {
       var slider1 = document.getElementById("filter-bar2");
       var output1 = document.getElementById("demo2");
 
-      var slider2 = document.getElementById("filter-bar3");
-      var output2 = document.getElementById("demo3");
+      // var slider2 = document.getElementById("filter-bar3");
+      // var output2 = document.getElementById("demo3");
 
       var slider3 = document.getElementById("filter-bar4");
       var output3 = document.getElementById("demo4");
 
       output.innerHTML = slider.value;
       output1.innerHTML = slider1.value;
-      output2.innerHTML = slider2.value;
+      // output2.innerHTML = slider2.value;
       output3.innerHTML = slider3.value;
       
       slider.oninput = function() {
@@ -566,9 +566,9 @@ html2canvas($(".wrapper1")[0],{allowTaint:true}).then(function(canvas) {
         output1.innerHTML = this.value;
       }
 
-      slider2.oninput = function() {
-        output2.innerHTML = this.value;
-      }
+      // slider2.oninput = function() {
+      //   output2.innerHTML = this.value;
+      // }
 
       slider3.oninput = function() {
         output3.innerHTML = this.value;
