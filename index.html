@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>ROI Calculator</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link href="assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+
+  <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <!--===============================================================================================-->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<!-- ================================================================================================ -->
+  <style>
+
+/* body{        
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+ #HRVision_Header {
+  overflow: hidden;  
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: block;
+}
+  */
+
+
+
+  .slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      background:#200000;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #ff5b5b;
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #ff5b5b;
+      cursor: pointer;
+    }
+    </style>
+
+</head>
+
+<body class = "wrapper1">
+  <div class="wrapper " id="pdfWindow">
+     <!-- <div class="main-panel"> -->
+
+      <div class="card card-nav-tabs" id="HRVision_Header">
+        
+        <div class="card-header" style="background-color:white; " >
+          <img src="HRVISIONLOGO.jpg" width="100" height="50">
+        </div>
+        <!-- <div class="card-body">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#0" class="btn btn-primary">Go somewhere</a>
+        </div> -->
+      </div>
+
+      <br> <!-- <br><br><br> -->
+      <!-- NAV BAR-->
+    <!-- <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+        <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
+     
+   <!--  <br><br><br> -->
+
+      <div class="row" style="margin: auto; display: block;">
+        <div class="col-md">
+          <div class="card">
+             <div class="card-header card-header-danger">
+              <h4 class="card-title">ROI Calculator</h4>
+              <p class="card-category">Calculate ROI Here</p>
+          </div>
+          <div class="card-body">
+            <div class="container-contact100">
+              <div class="wrap-contact100">
+                <form class="contact100-form validate-form">
+                    <div class="wrap-input100 bg1 rs1-wrap-input100" data-validate="Please Type Your Name">
+                    <span class="label-input100">Hires Per One Year</span>
+                    <input class="input100" id="hirespy" type="text" name="name" placeholder="Enter Hires per Year">
+
+                      
+                   
+                  </div>
+
+                  <div class="wrap-input100 bg1 rs1-wrap-input100" data-validate="Please Type Your Name">
+                    <span class="label-input100">Candidates interview for one hire</span>
+                    <input class="input100" id="hirespi" type="text" name="name" placeholder="Enter Candidates per Hire">
+
+                    
+                   
+                  </div>
+        
+          
+                  
+                  <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Members attend for one interview</span>
+                    <input class="input100" type="text" name="phone" placeholder="Enter members for one interview">
+
+                    <div class="contact100-form-range-value">
+                      <span id="demo1">0</span> 
+                    </div>
+        
+                    <div class="slidecontainer">
+                      <!-- <div id="filter-bar"></div> -->
+                      <input type="range" min="1" max="10" value="0" class="slider" id="filter-bar1">
+                    </div>
+                  </div> 
+
+                 
+
+                  <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Number of interview rounds per one candidate </span>
+                    <input class="input100" type="text" name="phone" placeholder="Enter members for one interview">
+                  
+                    <div class="contact100-form-range-value">
+                      <span id="demo2">0</span> 
+                    </div>
+        
+                    <div class="slidecontainer">
+                      <!-- <div id="filter-bar"></div> -->
+                      <input type="range" min="1" max="10" value="0" class="slider" id="filter-bar2">
+                    </div>
+  
+                  </div> 
+
+                 
+           
+                  <div class="wrap-input100 validate-input bg1">
+                    <span class="label-input100">Actual Interview time </span>
+                    <input class="input100" type="text" name="interview_time" placeholder="Enter scheduling and prep time">
+                  
+
+                    <div class="contact100-form-range-value">
+                      <span id="demo3">0</span> 
+                    </div>
+        
+                    <div class="slidecontainer">
+                      <!-- <div id="filter-bar"></div> -->
+                      <input type="range" min="0" max="200" value="0" class="slider" id="filter-bar3">
+                    </div>
+
+                  </div>
+                  
+
+
+                  <div class="wrap-input100 validate-input bg1">
+                    <span class="label-input100">Hourly wage for a professional  </span>
+                    <input class="input100" type="text" name="hourly_wage" placeholder="Enter hourly wage">
+                  
+
+                    <div class="contact100-form-range-value">
+                      <span id="demo4">0</span> 
+                    </div>
+        
+                    <div class="slidecontainer">
+                      <!-- <div id="filter-bar"></div> -->
+                      <input type="range" min="0" max="200" value="0" class="slider" id="filter-bar4">
+                    </div>
+
+                  </div>
+           
+                  <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" id="submitBut" onclick="calculateROI()" >
+                      <span>
+                        Submit
+                        <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <script>
+              function calculateROI() {
+                var hirespy = document.getElementById("hirespy").value;
+                var hirespi = document.getElementById("hirespi").value;
+
+                var members  = document.getElementById("filter-bar1").value;
+                var rounds  = document.getElementById("filter-bar2").value;
+                var interview_time  = document.getElementById("filter-bar3").value;
+                var wage  = document.getElementById("filter-bar4").value;
+
+                var minsSaved = hirespi * hirespy * 90 * rounds;
+                var costSaved = (minsSaved/60) * wage;
+                var costph = costSaved/hirespy;
+
+                document.getElementById("timeSavings").textContent = minsSaved/60 + " Hours";
+                document.getElementById("totalSavings").textContent = "USD " + costSaved;
+                document.getElementById("costperhire").textContent = "USD " + costph;
+
+              }
+              </script>
+            <!-- uncommented here --> 
+          </div>
+          </div>
+        </div>
+      
+      </div>
+      <br>
+      <div class="row" id="statInfo">
+        <div class="col-md-4">
+          <div class="card card-chart">
+            <div class="card-header card-header-danger">
+              <div class="ct-chart" id="dailySalesChart"></div>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Total Savings Annually - Time</h4>
+              <h2 class="card-category" id="timeSavings" style="text-align: center;">
+            </h2>
+                <!-- <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p> -->
+            </div>
+            <!-- <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">access_time</i> updated 4 minutes ago
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-chart">
+            <div class="card-header card-header-warning">
+              <div class="ct-chart" id="websiteViewsChart"></div>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Total Savings Annually - Cost</h4>
+              <h2 class="card-category" id="totalSavings" style="text-align: center;">
+              </h2>
+            </div>
+            <!-- <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">access_time</i> campaign sent 2 days ago
+              </div>
+            </div> -->
+          </div>
+        </div>
+       <div class="col-md-4">
+          <div class="card card-chart">
+            <div class="card-header card-header-success">
+              <div class="ct-chart" id="completedTasksChart"></div>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Cost saved per Hire</h4>
+              <h2 class="card-category" id="costperhire" style="text-align: center;">
+              </h2>
+            </div>
+            <!-- <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">access_time</i> campaign sent 2 days ago
+              </div>
+            </div> -->
+          </div>
+        </div> 
+
+        
+      </div>
+      <div class="row" >
+      <div style="display: block; margin-left: auto; margin-right: auto;">
+        <button type="button" class="btn btn-success"  id="create_pdf" onclick="generate()">Export as PDF</button>
+      </div>
+    </div>
+    <!-- uncommented here --> </div> 
+  </div>
+
+  <script>
+    	function generate(){
+
+var HTML_Width = $(".wrapper1").width();
+var HTML_Height = $(".wrapper1").height();
+var top_left_margin = 15;
+var PDF_Width = HTML_Width+(top_left_margin*2);
+var PDF_Height = (PDF_Width*1.5)+(top_left_margin*2);
+var canvas_image_width = 600;
+var canvas_image_height = 900;
+
+var totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
+
+
+html2canvas($(".wrapper1")[0],{allowTaint:true}).then(function(canvas) {
+  canvas.getContext('2d');
+  
+  console.log(canvas.height+"  "+canvas.width);
+  
+  
+  var imgData = canvas.toDataURL("image/jpeg", 1.0);
+  var pdf = new jsPDF('p', 'pt',  [650, 950]);
+    pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin,canvas_image_width,canvas_image_height);
+  
+  
+  for (var i = 1; i <= totalPDFPages; i++) { 
+    pdf.addPage(650, 950);
+    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+  }
+  
+    pdf.save("HRVision-ROI.pdf");
+    });
+};
+  </script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script> 
+
+  <script>  
+    (function () {  
+        var  
+         form = $('#statInfo'),  
+         cache_width = form.width(),  
+         a4 = [595.28, 841.89]; // for a4 size paper width and height  
+
+        $('#create_pdf').on('click', function () {  
+            $('#statInfo').scrollTop(0);  
+            createPDF();  
+        });  
+        //create pdf  
+        function createPDF() {  
+            getCanvas().then(function (canvas) {  
+                var  
+                 img = canvas.toDataURL("image/png"),  
+                 doc = new jsPDF({  
+                     unit: 'px',  
+                     format: 'a4'  
+                 });  
+                doc.addImage(img, 'JPEG', 20, 20);  
+                doc.save('HR-Vision-ROI.pdf');  
+                form.width(cache_width);  
+            });  
+        }  
+
+        // create canvas object  
+        function getCanvas() {  
+            form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');  
+            return html2canvas(form, {  
+                imageTimeout: 2000,  
+                removeContainer: true  
+            });  
+        }  
+
+    }());  
+</script>  
+<script>  
+    /* 
+ * jQuery helper plugin for examples and tests 
+ */  
+    (function ($) {  
+        $.fn.html2canvas = function (options) {  
+            var date = new Date(),  
+            $message = null,  
+            timeoutTimer = false,  
+            timer = date.getTime();  
+            html2canvas.logging = options && options.logging;  
+            html2canvas.Preload(this[0], $.extend({  
+                complete: function (images) {  
+                    var queue = html2canvas.Parse(this[0], images, options),  
+                    $canvas = $(html2canvas.Renderer(queue, options)),  
+                    finishTime = new Date();  
+
+                    $canvas.css({ position: 'absolute', left: 0, top: 0 }).appendTo(document.body);  
+                    $canvas.siblings().toggle();  
+
+                    $(window).click(function () {  
+                        if (!$canvas.is(':visible')) {  
+                            $canvas.toggle().siblings().toggle();  
+                            throwMessage("Canvas Render visible");  
+                        } else {  
+                            $canvas.siblings().toggle();  
+                            $canvas.toggle();  
+                            throwMessage("Canvas Render hidden");  
+                        }  
+                    });  
+                    throwMessage('Screenshot created in ' + ((finishTime.getTime() - timer) / 1000) + " seconds<br />", 4000);  
+                }  
+            }, options));  
+
+            function throwMessage(msg, duration) {  
+                window.clearTimeout(timeoutTimer);  
+                timeoutTimer = window.setTimeout(function () {  
+                    $message.fadeOut(function () {  
+                        $message.remove();  
+                    });  
+                }, duration || 2000);  
+                if ($message)  
+                    $message.remove();  
+                $message = $('<div ></div>').html(msg).css({  
+                    margin: 0,  
+                    padding: 10,  
+                    background: "#000",  
+                    opacity: 0.7,  
+                    position: "fixed",  
+                    top: 10,  
+                    right: 10,  
+                    fontFamily: 'Tahoma',  
+                    color: '#fff',  
+                    fontSize: 12,  
+                    borderRadius: 12,  
+                    width: 'auto',  
+                    height: 'auto',  
+                    textAlign: 'center',  
+                    textDecoration: 'none'  
+                }).hide().fadeIn().appendTo('body');  
+            }  
+        };  
+    })(jQuery);  
+
+</script>   -->
+
+
+
+<!-- ===============================================================================================-->
+	<script src="assets/vendor/daterangepicker/moment.min.js"></script>
+	<script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="assets/vendor/noui/nouislider.min.js"></script>
+  <!--===============================================================================================-->
+	<script src="assets/js/main.js"></script> 
+
+
+  <!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+
+    <script>
+      $(".js-select2").each(function(){
+        $(this).select2({
+          minimumResultsForSearch: 20,
+          dropdownParent: $(this).next('.dropDownSelect2')
+        });
+  
+  
+        $(".js-select2").each(function(){
+          $(this).on('select2:close', function (e){
+            if($(this).val() == "Please chooses") {
+              $('.js-show-service').slideUp();
+            }
+            else {
+              $('.js-show-service').slideUp();
+              $('.js-show-service').slideDown();
+            }
+          });
+        });
+      })
+    </script>
+
+  <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+  <!--===============================================================================================-->
+    <script src="vendor/noui/nouislider.min.js"></script>
+
+
+    <script>
+      var slider = document.getElementById("filter-bar1");
+      var output = document.getElementById("demo1");
+
+      var slider1 = document.getElementById("filter-bar2");
+      var output1 = document.getElementById("demo2");
+
+      var slider2 = document.getElementById("filter-bar3");
+      var output2 = document.getElementById("demo3");
+
+      var slider3 = document.getElementById("filter-bar4");
+      var output3 = document.getElementById("demo4");
+
+      output.innerHTML = slider.value;
+      output1.innerHTML = slider1.value;
+      output2.innerHTML = slider2.value;
+      output3.innerHTML = slider3.value;
+      
+      slider.oninput = function() {
+        output.innerHTML = this.value;
+      }
+
+      slider1.oninput = function() {
+        output1.innerHTML = this.value;
+      }
+
+      slider2.oninput = function() {
+        output2.innerHTML = this.value;
+      }
+
+      slider3.oninput = function() {
+        output3.innerHTML = this.value;
+      }
+      </script>
+  <!--===============================================================================================-->
+    <script src="assets/js/main.js"></script>
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-23581568-13');
+  </script>
+
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Plugin for the momentJs  -->
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../assets/js/plugins/nouislider.min.js"></script>
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <!-- Library for adding dinamically elements -->
+  <script src="../assets/js/plugins/arrive.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chartist JS -->
+  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+
+        $('.fixed-plugin a').click(function(event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function() {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
+
+
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function() {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function() {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function() {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function() {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+          } else {
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+            setTimeout(function() {
+              $('body').addClass('sidebar-mini');
+
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      md.initDashboardPageCharts();
+
+    });
+  </script>
+
+
+
+</body>
+
+</html>
